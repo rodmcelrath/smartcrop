@@ -278,8 +278,8 @@ func analyse(logger Logger, img *image.RGBA, cropWidth, cropHeight, realMinScale
 
 		// return (c.Score.Detail*detailWeight + c.Score.Skin*skinWeight + c.Score.Saturation*saturationWeight) / float64(c.Dx()) / float64(c.Dy())
 
-		logger.Log.Printf("totalScore: %f\n", totalScore)
 		logger.Log.Printf("Detail: %f, Skin: %f, Saturation: %f\n", crop.Score.Detail, crop.Score.Skin, crop.Score.Saturation)
+		logger.Log.Printf("totalScore: %f, crop: %+v\n", totalScore, crop)
 
 		if crop.totalScore() > topScore {
 			topCrop = crop
@@ -287,6 +287,7 @@ func analyse(logger Logger, img *image.RGBA, cropWidth, cropHeight, realMinScale
 		}
 	}
 	logger.Log.Println("Time elapsed score:", time.Since(now))
+	logger.Log.Printf("**** TopScore: %f, topCrop: %+v\n", topScore, topCrop)
 
 	if logger.DebugMode {
 		drawDebugCrop(topCrop, o)
