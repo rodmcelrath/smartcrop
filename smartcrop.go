@@ -279,7 +279,7 @@ func analyse(logger Logger, img *image.RGBA, cropWidth, cropHeight, realMinScale
 		// return (c.Score.Detail*detailWeight + c.Score.Skin*skinWeight + c.Score.Saturation*saturationWeight) / float64(c.Dx()) / float64(c.Dy())
 
 		logger.Log.Printf("totalScore: %f\n", totalScore)
-		logger.Log.Printf("Detail: %f, Skin: %f, Saturation: %f\n", c.Score.Detail, c.Score.Skin, c.Score.Saturation)
+		logger.Log.Printf("Detail: %f, Skin: %f, Saturation: %f\n", crop.Score.Detail, crop.Score.Skin, crop.Score.Saturation)
 
 		if crop.totalScore() > topScore {
 			topCrop = crop
